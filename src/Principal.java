@@ -36,6 +36,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("Assets/logo_doramas.png")).getImage());
          System.setProperty("http.agent", "Chrome");
         try {
             getLastChapters();
