@@ -1,2 +1,0 @@
-DoramaThumbModel
-xyz.zsckare.doramasdownloader.Models.DoramaThumbModel

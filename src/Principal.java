@@ -65,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         imgViewDorama = new javax.swing.JLabel();
         percentLabel = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +92,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        progressBar.setBackground(new java.awt.Color(0, 0, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,25 +105,26 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btn360)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imgViewDorama, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(percentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                        .addComponent(btn480)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn720))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(btn360)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn480)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn720))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addComponent(jButton1)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(65, 65, 65)
+                        .addComponent(jButton1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imgViewDorama, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(percentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(progressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +139,9 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(percentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(percentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn360)
@@ -220,6 +226,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JList<String> listaUtlimosCapitulos;
     public static javax.swing.JLabel percentLabel;
+    public static javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
     
     
@@ -241,7 +248,7 @@ public class Principal extends javax.swing.JFrame {
                     
 
 
-                    Document doc = Jsoup.connect(Comun.main_url).userAgent("Mozilla").timeout(5000).get();
+                    Document doc = Jsoup.connect(Comun.main_url).userAgent("Mozilla").timeout(10000).get();
                     Elements links = doc.select("div.thumb-cap");
                     Elements links_text = doc.select("div.thumb-cap > strong > a");
                     Elements images = doc.select("div.thumb-cap > a > img");
@@ -277,6 +284,7 @@ public class Principal extends javax.swing.JFrame {
                 catch (Exception e)
                 {
 
+                    JOptionPane.showMessageDialog(null,"Ha Ocurrido un error intenta de nuevo mas tarde");
                     e.printStackTrace();
                 }
             }
