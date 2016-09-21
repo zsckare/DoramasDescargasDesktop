@@ -1,2 +1,0 @@
-GenereModel
-xyz.zsckare.doramasdownloader.Models.GenereModel
