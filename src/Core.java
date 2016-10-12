@@ -178,6 +178,7 @@ public class Core implements FileDownloaderDelegate{
 		if (fileDownloader.getKbPerSecond() != null) {
 			kbPerSecond = fileDownloader.getKbPerSecond() + " kb/s";
 		}
+                Principal.speed_label.setText("Velocidad de Descarga: "+kbPerSecond);
                 String percentString[] = fileDownloader.getPercentComplete().split("%");
                 int percent = Math.round(Float.parseFloat(percentString[0]));
                 Principal.progressBar.setValue(percent);
