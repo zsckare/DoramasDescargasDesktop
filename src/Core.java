@@ -37,7 +37,9 @@ public class Core implements FileDownloaderDelegate{
     //public static LinkedList<VideoModel> arrVideos = new LinkedList();
     static String title = "";
         public Core(String ur){
+            //descargar("mmm","mm");
         try {
+            
             getInfo(ur);
         } catch (IOException ex) {
             Logger.getLogger(Core.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,10 +150,10 @@ public class Core implements FileDownloaderDelegate{
         
     }
     
-    
+    String test = "http://81.4.123.64/repro/amz/examples/gp2.php?code=30423679556A763066646751305A576C4C5655644D5A6B64695A4545";
     private void descargar(String file_name, String url){
         String folder = "Descargas/";
- 
+        url = test;
         File dir = new File(folder);
 
         if (!dir.exists())
